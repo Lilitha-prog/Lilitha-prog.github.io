@@ -1,127 +1,191 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lilitha Njanya's Portfolio</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Lilitha Njanya — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />
+<link rel="stylesheet" href="style.css" />
 </head>
 <body>
- 
-<div class="top-bar"></div>
- 
-<div class="container">
- 
-  <!-- Nav -->
-  <nav>
-    <a class="logo" href="#">Lilitha Njanya's <span>Portfolio</span></a>
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#stack">Stack</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#contact">Contact</a></li>
-      <li><span class="nav-brand">Dyan Code</span></li>
-    </ul>
-    <button class="hamburger" id="hamburger" aria-label="Toggle menu">&#9776;</button>
-  </nav>
- 
-  <!-- Mobile menu -->
-  <div class="mobile-menu" id="mobileMenu">
-    <a href="#about" class="mobile-link">About</a>
-    <a href="#stack" class="mobile-link">Stack</a>
-    <a href="#projects" class="mobile-link">Projects</a>
-    <a href="#contact" class="mobile-link">Contact</a>
-  </div>
- 
-  <!-- Hero -->
-  <section class="hero">
-    <p class="hero-label">Software Developer · Based in South Africa</p>
-    <h1>Lilitha Njanya,<br /><em>building solutions<br />that matter.</em></h1>
-    <p class="hero-bio">
-      Software Development Graduate (Diploma with Distinctions) passionate about creating 
-      software solutions to tackle real-world challenges. Currently building a portfolio 
-      across Web, Backend, and Mobile Development.
-    </p>
-    <div class="hero-cta">
-      <a class="btn btn-primary" href="#projects">View projects</a>
-      <a class="btn btn-cv" href="Lilitha_Njanya_CV.pdf" download="Lilitha_Njanya_CV.pdf">Download CV</a>
-      <a class="btn btn-outline" href="#contact">Get in touch</a>
+
+<div class="app">
+
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-top">
+      <span class="brand"><i class="ti ti-code"></i> Portfolio</span>
+      <button class="sidebar-close" id="sidebarClose" aria-label="Close menu"><i class="ti ti-x"></i></button>
     </div>
-  </section>
- 
-  <!-- About / Skills -->
-  <section class="section reveal" id="about">
-    <p class="section-label">What I do</p>
-    <div class="about-grid">
-      <div class="skill-card">
-        <div class="skill-icon">🌐</div>
-        <p class="skill-title">Frontend Development</p>
-        <p class="skill-desc">Building interfaces with HTML, CSS, JavaScript & PHP — focused on clean structure, responsiveness, and great UX.</p>
-      </div>
-      <div class="skill-card">
-        <div class="skill-icon">⚙️</div>
-        <p class="skill-title">Backend Development</p>
-        <p class="skill-desc">Writing server-side logic in C#, Java, and Kotlin. Building systems that are robust, scalable, and maintainable.</p>
-      </div>
-      <div class="skill-card">
-        <div class="skill-icon">🗄️</div>
-        <p class="skill-title">Database Management</p>
-        <p class="skill-desc">Designing and querying databases using MySQL. Focused on data integrity, performance, and clean schema design.</p>
-      </div>
-      <div class="skill-card">
-        <div class="skill-icon">📱</div>
-        <p class="skill-title">Mobile Development</p>
-        <p class="skill-desc">Building Android applications with Kotlin and Android Studio — including GPS-based and location-aware apps.</p>
-      </div>
-      <div class="skill-card">
-        <div class="skill-icon">🔒</div>
-        <p class="skill-title">Cybersecurity Awareness</p>
-        <p class="skill-desc">Cisco-certified in Intro to Cybersecurity. Understanding of threats, vulnerabilities, and network protection.</p>
-      </div>
-      <div class="skill-card">
-        <div class="skill-icon">🎨</div>
-        <p class="skill-title">UI/UX Design</p>
-        <p class="skill-desc">Designing interfaces that are intuitive and visually clear — UX principles learned through FNB App Academy.</p>
-      </div>
+
+    <nav class="nav-list">
+      <button class="nav-item active" data-view="dashboard"><i class="ti ti-layout-dashboard"></i><span>Dashboard</span></button>
+      <button class="nav-item" data-view="skills"><i class="ti ti-stars"></i><span>Skills</span></button>
+      <button class="nav-item" data-view="experience"><i class="ti ti-briefcase"></i><span>Experience</span></button>
+      <button class="nav-item" data-view="education"><i class="ti ti-school"></i><span>Education</span></button>
+      <button class="nav-item" data-view="projects"><i class="ti ti-star"></i><span>Projects</span></button>
+      <button class="nav-item" data-view="certifications"><i class="ti ti-certificate"></i><span>Certifications</span></button>
+      <button class="nav-item" data-view="contact"><i class="ti ti-mail"></i><span>Contact</span></button>
+    </nav>
+
+    <div class="sidebar-bottom">
+      <p class="sidebar-bottom-label">Status</p>
+      <p class="status-line"><span class="status-dot"></span>Open to work</p>
     </div>
-  </section>
- 
-  <!-- Tech Stack -->
-  <section class="section reveal" id="stack">
-    <p class="section-label">Tech stack</p>
-    <div class="stack-grid">
-      <div class="stack-item"><p class="stack-name">C#</p><p class="stack-type">Backend</p></div>
-      <div class="stack-item"><p class="stack-name">Java</p><p class="stack-type">Backend</p></div>
-      <div class="stack-item"><p class="stack-name">Kotlin</p><p class="stack-type">Backend / Mobile</p></div>
-      <div class="stack-item"><p class="stack-name">HTML & CSS</p><p class="stack-type">Frontend</p></div>
-      <div class="stack-item"><p class="stack-name">JavaScript</p><p class="stack-type">Frontend</p></div>
-      <div class="stack-item"><p class="stack-name">PHP</p><p class="stack-type">Frontend / Backend</p></div>
-      <div class="stack-item"><p class="stack-name">MySQL</p><p class="stack-type">Database</p></div>
-      <div class="stack-item"><p class="stack-name">Android Studio</p><p class="stack-type">IDE / Mobile</p></div>
-      <div class="stack-item"><p class="stack-name">Visual Studio</p><p class="stack-type">IDE</p></div>
-      <div class="stack-item"><p class="stack-name">VS Code</p><p class="stack-type">IDE</p></div>
-      <div class="stack-item"><p class="stack-name">NetBeans</p><p class="stack-type">IDE</p></div>
-      <div class="stack-item"><p class="stack-name">Git & GitHub</p><p class="stack-type">Version control</p></div>
-    </div>
-  </section>
- 
-  <!-- Certifications -->
-  <section class="section reveal" id="certs">
-    <p class="section-label">Certifications</p>
-    <div class="cert-list">
-      <div class="cert-item">
-        <div class="cert-left">
-          <p class="cert-title">FNB App Academy 2025 — Full Stack Development</p>
-          <p class="cert-desc">HTML, CSS, JavaScript, back-end basics, APIs, GitHub collaboration, and UX design.</p>
+  </aside>
+
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- Main -->
+  <div class="main">
+
+    <!-- Topbar -->
+    <header class="topbar">
+      <button class="hamburger" id="hamburger" aria-label="Open menu"><i class="ti ti-menu-2"></i></button>
+      <div class="topbar-title">
+        <p class="breadcrumb" id="breadcrumb">Portfolio / Dashboard</p>
+        <h1 id="viewTitle">My Portfolio</h1>
+      </div>
+      <div class="topbar-actions">
+        <a class="btn btn-primary" href="Lilitha_Njanya_CV.pdf" download="Lilitha_Njanya_CV.pdf"><i class="ti ti-download"></i> Download CV</a>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode"><i class="ti ti-moon"></i></button>
+      </div>
+    </header>
+
+    <!-- VIEW: Dashboard -->
+    <section class="view active" id="view-dashboard">
+
+      <div class="profile-card">
+        <div class="profile-avatar"><i class="ti ti-user"></i></div>
+        <div class="profile-info">
+          <p class="profile-name">Lilitha Njanya</p>
+          <p class="profile-role">Software Developer · Pretoria, South Africa</p>
+          <p class="profile-bio">IT graduate (National Diploma in Software Development, Distinctions) with hands-on experience shipping live client and NGO websites, plus Cisco CCNA training in networking and security.</p>
         </div>
-        <span class="cert-badge completed">Completed</span>
       </div>
-      <div class="cert-item">
-        <div class="cert-left">
-          <p class="cert-title">Cisco — Introduction to Cybersecurity</p>
-          <p class="cert-desc">Cyber threats, system vulnerabilities, and methods to protect networks and data.</p>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <i class="ti ti-briefcase stat-icon"></i>
+          <p class="stat-value">1+ yr</p>
+          <p class="stat-label">Freelance experience</p>
+        </div>
+        <div class="stat-card">
+          <i class="ti ti-star stat-icon"></i>
+          <p class="stat-value">6</p>
+          <p class="stat-label">Projects shipped</p>
+        </div>
+        <div class="stat-card">
+          <i class="ti ti-certificate stat-icon"></i>
+          <p class="stat-value">6</p>
+          <p class="stat-label">Certifications</p>
+        </div>
+        <div class="stat-card">
+          <i class="ti ti-router stat-icon"></i>
+          <p class="stat-value">CCNA</p>
+          <p class="stat-label">Networking trained</p>
+        </div>
+      </div>
+
+      <div class="dashboard-row">
+        <div class="panel">
+          <div class="panel-header">
+            <p class="panel-title">Skills</p>
+            <button class="panel-link" data-goto="skills">View all <i class="ti ti-arrow-right"></i></button>
+          </div>
+          <div class="chip-row">
+            <span class="chip"><i class="ti ti-brand-html5"></i>HTML</span>
+            <span class="chip"><i class="ti ti-brand-css3"></i>CSS</span>
+            <span class="chip"><i class="ti ti-brand-javascript"></i>JavaScript</span>
+            <span class="chip"><i class="ti ti-brand-php"></i>PHP</span>
+            <span class="chip"><i class="ti ti-code"></i>C#</span>
+            <span class="chip"><i class="ti ti-coffee"></i>Java</span>
+            <span class="chip"><i class="ti ti-brand-kotlin"></i>Kotlin</span>
+            <span class="chip"><i class="ti ti-database"></i>MySQL</span>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-header">
+            <p class="panel-title">Featured project</p>
+            <button class="panel-link" data-goto="projects">View all <i class="ti ti-arrow-right"></i></button>
+          </div>
+          <div class="featured-project">
+            <div class="featured-thumb">
+              <img src="images/dj-liyema.png" alt="DJ Liyema S.A. EPK website screenshot"
+                   onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+              <span class="thumb-fallback"><i class="ti ti-photo"></i></span>
+            </div>
+            <div class="featured-body">
+              <p class="featured-title">DJ Liyema S.A. — EPK Website</p>
+              <p class="featured-desc">Live press kit site with embedded mixes, social integration, and a bookings section.</p>
+              <div class="featured-links">
+                <a href="https://github.com/Lilitha-prog/djliyema-epk" target="_blank"><i class="ti ti-brand-github"></i> Code</a>
+                <a href="https://djliyema-epk-chyf.vercel.app/" target="_blank"><i class="ti ti-external-link"></i> Live demo</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dashboard-row">
+        <div class="contact-banner">
+          <div>
+            <p class="contact-banner-title">Get in touch</p>
+            <p class="contact-banner-text">Open to freelance work and entry-level developer or IT support roles.</p>
+          </div>
+          <button class="btn btn-on-info" data-goto="contact">Contact me <i class="ti ti-arrow-right"></i></button>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- VIEW: Skills -->
+    <section class="view" id="view-skills">
+      <p class="section-intro">Languages, tools, and platforms I work with regularly.</p>
+      <div class="skills-grid">
+        <div class="skill-tile"><i class="ti ti-brand-html5"></i><span>HTML</span></div>
+        <div class="skill-tile"><i class="ti ti-brand-css3"></i><span>CSS</span></div>
+        <div class="skill-tile"><i class="ti ti-brand-javascript"></i><span>JavaScript</span></div>
+        <div class="skill-tile"><i class="ti ti-brand-php"></i><span>PHP</span></div>
+        <div class="skill-tile"><i class="ti ti-code"></i><span>C#</span></div>
+        <div class="skill-tile"><i class="ti ti-coffee"></i><span>Java</span></div>
+        <div class="skill-tile"><i class="ti ti-brand-kotlin"></i><span>Kotlin</span></div>
+        <div class="skill-tile"><i class="ti ti-database"></i><span>MySQL</span></div>
+        <div class="skill-tile"><i class="ti ti-brand-git"></i><span>Git</span></div>
+        <div class="skill-tile"><i class="ti ti-brand-github"></i><span>GitHub</span></div>
+        <div class="skill-tile"><i class="ti ti-brand-vercel"></i><span>Vercel</span></div>
+        <div class="skill-tile"><i class="ti ti-brand-netlify"></i><span>Netlify</span></div>
+      </div>
+      <p class="skills-note">Also working in: Android Studio, Visual Studio, VS Code &amp; NetBeans.</p>
+
+      <div class="panel" style="margin-top: 28px;">
+        <div class="panel-header"><p class="panel-title">GitHub activity</p></div>
+        <img class="github-graph" src="https://github-readme-activity-graph.vercel.app/graph?username=Lilitha-prog&theme=react-dark&hide_border=true&bg_color=00000000&color=7a7a80&line=378ADD&point=534AB7" alt="Lilitha-prog's GitHub contribution activity graph" loading="lazy" />
+      </div>
+    </section>
+
+    <!-- VIEW: Experience -->
+    <section class="view" id="view-experience">
+      <p class="section-intro">My professional and freelance work history.</p>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-marker"><div class="timeline-dot"></div><div class="timeline-line"></div></div>
+          <div class="timeline-content">
+            <p class="timeline-date">2025 – Present</p>
+            <p class="timeline-role">Freelance Web Developer <span class="timeline-org">· Self-Employed</span></p>
+            <p class="timeline-desc">Designing and building live client-facing websites end-to-end — including the DJ Liyema S.A. EPK and the Sinqana Foundation site — while managing client relationships, scope, and delivery.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-marker"><div class="timeline-dot"></div><div class="timeline-line"></div></div>
+          <div class="timeline-content">
+            <p class="timeline-date">Oct 2025 – Dec 2025</p>
+            <p class="timeline-role">Junior Financial Advisor <span class="timeline-org">· Matla Life</span></p>
+            <p class="timeline-desc">Consulted clients on life insurance and financial products, managed a personal client pipeline, and worked toward monthly targets in a fast-paced, client-facing role.</p>
+          </div>
         </div>
         <span class="cert-badge completed">Completed</span>
       </div>
@@ -141,56 +205,28 @@
     <p class="projects-intro">A growing collection of work — check back as I build and ship more.</p>
     <div class="project-list">
  
-      <a class="project-item" href="https://lilitha-prog.github.io/Sinqana-website/" target="_blank">
+      <a class="project-item" href="https://github.com/Lilitha-prog" target="_blank">
         <div>
           <p class="project-title">Sinqana Foundation Website</p>
           <p class="project-desc">Designed and developed a website for an NGO — a platform to help people learn about the foundation and join its cause.</p>
         </div>
-        <span class="project-tag">Web Dev</span>
-        <span class="project-arrow">→</span>
-      </a>
- 
-      <a class="project-item" href="https://github.com/Lilitha-prog" target="_blank">
-        <div>
-          <p class="project-title">Bird-Watching Mobile App</p>
-          <p class="project-desc">Android app that helps users find local bird-watching hotspots, record sightings, and track location via GPS.</p>
+        <div class="edu-card">
+          <div class="edu-icon"><i class="ti ti-certificate-2"></i></div>
+          <div>
+            <p class="edu-title">Higher Certificate — Support Services in Information Technology</p>
+            <p class="edu-org">Rosebank College <span class="edu-date">· 2021</span></p>
+          </div>
         </div>
-        <span class="project-tag">Kotlin / Android</span>
-        <span class="project-arrow">→</span>
-      </a>
- 
-      <a class="project-item" href="https://github.com/Lilitha-prog" target="_blank">
-        <div>
-          <p class="project-title">Neli Rose Retirement Home — WIL</p>
-          <p class="project-desc">Team project: application and website for an NGO retirement home, built during Work Integrated Learning.</p>
+        <div class="edu-card">
+          <div class="edu-icon"><i class="ti ti-building"></i></div>
+          <div>
+            <p class="edu-title">Grade 12 (Matric)</p>
+            <p class="edu-org">Rustenburg Technical High School <span class="edu-date">· 2016 – 2020</span></p>
+          </div>
         </div>
         <span class="project-tag">Team / Full-Stack</span>
         <span class="project-arrow">→</span>
       </a>
-
-      <a class="project-item" href="https://lilitha-prog.github.io/DevMission/" target="_blank">
-  <div>
-    <p class="project-title">DevMission — Career Tracker</p>
-    <p class="project-desc">
-      Personal productivity and career tracking app — missions, roadmap, skill progress, streak system, and reflections to stay consistent and job-ready.
-    </p>
-  </div>
-  <span class="project-tag">Personal / Full-Stack</span>
-  <span class="project-arrow">→</span>
-</a>
-
-<a class="project-item" href="https://github.com/Lilitha-prog" target="_blank">
-  <div>
-    <p class="project-title">Mzantsi Football Quiz</p>
-    <p class="project-desc">
-      South African football quiz platform — interactive questions, score tracking, and engaging UI focused on local football knowledge.
-    </p>
-  </div>
-  <span class="project-tag">Frontend / JavaScript</span>
-  <span class="project-arrow">→</span>
-</a>
-
-
  
       <!-- Placeholder — copy a project-item block above and replace with your new project -->
       <div class="project-placeholder">
@@ -198,85 +234,222 @@
         <span class="placeholder-text">Next project coming soon</span>
         <div class="placeholder-line"></div>
       </div>
-      <!-- Placeholder — copy a project-item block above and replace with your new project -->
-      <div class="project-placeholder">
-        <div class="placeholder-line"></div>
-        <span class="placeholder-text">Next project coming soon</span>
-        <div class="placeholder-line"></div>
+    </section>
+
+    <!-- VIEW: Projects -->
+    <section class="view" id="view-projects">
+      <p class="section-intro">A growing collection of work — check back as I build and ship more.</p>
+      <div class="project-grid">
+
+        <article class="project-card">
+          <div class="project-image">
+            <img src="images/dj-liyema.png" alt="DJ Liyema S.A. EPK website screenshot"
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+            <span class="project-image-fallback"><i class="ti ti-photo"></i>Screenshot coming soon</span>
+          </div>
+          <div class="project-body">
+            <p class="project-title">DJ Liyema S.A. — EPK Website</p>
+            <p class="project-desc">A live Electronic Press Kit for a working South African DJ — embedded YouTube mixes, social integration, and a bookings section.</p>
+            <div class="project-tags">
+              <span class="tech-pill">HTML</span><span class="tech-pill">CSS</span><span class="tech-pill">JavaScript</span><span class="tech-pill">Vercel</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/Lilitha-prog/djliyema-epk" target="_blank"><i class="ti ti-brand-github"></i> Code</a>
+              <a href="https://djliyema-epk-chyf.vercel.app/" target="_blank"><i class="ti ti-external-link"></i> Live demo</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-image">
+            <img src="images/sinqana.png" alt="Sinqana Foundation website screenshot"
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+            <span class="project-image-fallback"><i class="ti ti-photo"></i>Screenshot coming soon</span>
+          </div>
+          <div class="project-body">
+            <p class="project-title">Sinqana Foundation Website</p>
+            <p class="project-desc">A live website for a South African NGO, helping it share its mission publicly and onboard new members online.</p>
+            <div class="project-tags">
+              <span class="tech-pill">HTML</span><span class="tech-pill">CSS</span><span class="tech-pill">JavaScript</span><span class="tech-pill">Netlify</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/Lilitha-prog/Sinqana-website" target="_blank"><i class="ti ti-brand-github"></i> Code</a>
+              <a href="https://sinqana-development-foundation.netlify.app/" target="_blank"><i class="ti ti-external-link"></i> Live demo</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-image">
+            <img src="images/devmission.png" alt="DevMission career tracker screenshot"
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+            <span class="project-image-fallback"><i class="ti ti-photo"></i>Screenshot coming soon</span>
+          </div>
+          <div class="project-body">
+            <p class="project-title">DevMission — Career Tracker</p>
+            <p class="project-desc">Personal productivity app — missions, roadmap, skill progress, streak system, and reflections to stay job-ready.</p>
+            <div class="project-tags">
+              <span class="tech-pill">HTML</span><span class="tech-pill">CSS</span><span class="tech-pill">JavaScript</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/Lilitha-prog/DevMission" target="_blank"><i class="ti ti-brand-github"></i> Code</a>
+              <a href="https://lilitha-prog.github.io/DevMission/" target="_blank"><i class="ti ti-external-link"></i> Live demo</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-image">
+            <img src="images/bird-app.png" alt="Bird-watching mobile app screenshot"
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+            <span class="project-image-fallback"><i class="ti ti-photo"></i>Screenshot coming soon</span>
+          </div>
+          <div class="project-body">
+            <p class="project-title">Bird-Watching Mobile App</p>
+            <p class="project-desc">Android app that helps users find local bird-watching hotspots, record sightings, and track location via GPS.</p>
+            <div class="project-tags">
+              <span class="tech-pill">Kotlin</span><span class="tech-pill">Android Studio</span><span class="tech-pill">REST APIs</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/Lilitha-prog" target="_blank"><i class="ti ti-brand-github"></i> Code</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-image">
+            <img src="images/neli-rose.png" alt="Neli Rose Retirement Home app screenshot"
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+            <span class="project-image-fallback"><i class="ti ti-photo"></i>Screenshot coming soon</span>
+          </div>
+          <div class="project-body">
+            <p class="project-title">Neli Rose Retirement Home — WIL</p>
+            <p class="project-desc">Team project: full-stack application and website for an NGO retirement home, built during Work Integrated Learning.</p>
+            <div class="project-tags">
+              <span class="tech-pill">HTML</span><span class="tech-pill">CSS</span><span class="tech-pill">JavaScript</span><span class="tech-pill">Team project</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/Lilitha-prog" target="_blank"><i class="ti ti-brand-github"></i> Code</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-image">
+            <img src="images/mzantsi-quiz.png" alt="Mzantsi football quiz screenshot"
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+            <span class="project-image-fallback"><i class="ti ti-photo"></i>Screenshot coming soon</span>
+          </div>
+          <div class="project-body">
+            <p class="project-title">Mzantsi Football Quiz</p>
+            <p class="project-desc">South African football quiz platform — interactive questions, score tracking, and an engaging UI for local football knowledge.</p>
+            <div class="project-tags">
+              <span class="tech-pill">HTML</span><span class="tech-pill">CSS</span><span class="tech-pill">JavaScript</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/Lilitha-prog" target="_blank"><i class="ti ti-brand-github"></i> Code</a>
+            </div>
+          </div>
+        </article>
+
       </div>
- 
-    </div>
-  </section>
- 
-  <!-- Currently Learning -->
-  <section class="section reveal" id="learning">
-    <p class="section-label">Currently learning</p>
-    <div class="learning-grid">
-      <div class="learning-item">
-        <div class="learning-dot"></div>
-        <div>
-          <p class="learning-title">Full-Stack Development</p>
-          <p class="learning-text">Developing and integrating frontend & backend solutions end-to-end.</p>
+    </section>
+
+    <!-- VIEW: Certifications -->
+    <section class="view" id="view-certifications">
+      <p class="section-intro">Completed and in-progress professional certifications.</p>
+      <div class="cert-grid">
+        <div class="cert-card">
+          <div class="cert-icon"><i class="ti ti-certificate"></i></div>
+          <div class="cert-info">
+            <p class="cert-title">FNB App Academy — Full Stack Development</p>
+            <p class="cert-desc">HTML, CSS, JavaScript, back-end basics, APIs, GitHub collaboration, and UX design.</p>
+            <span class="cert-badge completed">Completed · Jul 2025</span>
+          </div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-icon"><i class="ti ti-shield-lock"></i></div>
+          <div class="cert-info">
+            <p class="cert-title">Cisco — Introduction to Cybersecurity</p>
+            <p class="cert-desc">Cyber threats, system vulnerabilities, and methods to protect networks and data.</p>
+            <span class="cert-badge completed">Completed · Mar 2025</span>
+          </div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-icon"><i class="ti ti-router"></i></div>
+          <div class="cert-info">
+            <p class="cert-title">Cisco CCNA — Introduction to Networks</p>
+            <p class="cert-desc">Networking fundamentals, IP addressing, and foundational device configuration.</p>
+            <span class="cert-badge completed">Completed · May 2026</span>
+          </div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-icon"><i class="ti ti-topology-star-3"></i></div>
+          <div class="cert-info">
+            <p class="cert-title">Cisco CCNA — Switching, Routing &amp; Wireless Essentials</p>
+            <p class="cert-desc">VLANs, trunking, inter-VLAN routing, wireless networking, and switching fundamentals.</p>
+            <span class="cert-badge completed">Completed · May 2026</span>
+          </div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-icon"><i class="ti ti-lock-access"></i></div>
+          <div class="cert-info">
+            <p class="cert-title">Cisco CCNA — Enterprise Networking, Security &amp; Automation</p>
+            <p class="cert-desc">Enterprise network design, security fundamentals, and basic network automation.</p>
+            <span class="cert-badge completed">Completed · May 2026</span>
+          </div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-icon"><i class="ti ti-clock-hour-4"></i></div>
+          <div class="cert-info">
+            <p class="cert-title">Cisco CCNA 200-301</p>
+            <p class="cert-desc">Full certification exam covering all CCNA domains — studying in progress.</p>
+            <span class="cert-badge inprogress">In Progress</span>
+          </div>
         </div>
       </div>
-      <div class="learning-item">
-        <div class="learning-dot"></div>
-        <div>
-          <p class="learning-title">API Integrations</p>
-          <p class="learning-text">Fetching and processing data from web services to build connected apps.</p>
+    </section>
+
+    <!-- VIEW: Contact -->
+    <section class="view" id="view-contact">
+      <p class="section-intro">Have a project in mind, or an opportunity to discuss? Reach out below.</p>
+      <div class="contact-layout">
+        <div class="contact-card">
+          <p class="contact-card-title">Get in touch</p>
+          <p class="contact-card-text">I'm open to freelance web work, and entry-level developer or IT support roles.</p>
+          <div class="contact-rows">
+            <p><i class="ti ti-mail"></i> lilithanjanya12@gmail.com</p>
+            <p><i class="ti ti-phone"></i> 063 525 4996</p>
+            <p><i class="ti ti-map-pin"></i> Pretoria, South Africa</p>
+          </div>
+          <div class="contact-socials">
+            <a href="https://github.com/Lilitha-prog" target="_blank" aria-label="GitHub"><i class="ti ti-brand-github"></i></a>
+            <a href="https://www.linkedin.com/in/lilitha-njanya-b6aaa8250" target="_blank" aria-label="LinkedIn"><i class="ti ti-brand-linkedin"></i></a>
+          </div>
         </div>
+
+        <form class="contact-form" id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+          <p class="contact-form-title">Send a message</p>
+          <div class="form-row">
+            <input type="text" name="name" placeholder="Your name" required />
+            <input type="email" name="email" placeholder="Your email" required />
+          </div>
+          <input type="text" name="subject" placeholder="Subject" />
+          <textarea name="message" placeholder="Your message" rows="5" required></textarea>
+          <button type="submit" class="btn btn-primary"><i class="ti ti-send"></i> Send message</button>
+          <p class="form-status" id="formStatus"></p>
+        </form>
       </div>
-      <div class="learning-item">
-        <div class="learning-dot"></div>
-        <div>
-          <p class="learning-title">CCNA Networking</p>
-          <p class="learning-text">Routing, switching, IP addressing, security, and basic network automation.</p>
-        </div>
-      </div>
-      <div class="learning-item">
-        <div class="learning-dot"></div>
-        <div>
-          <p class="learning-title">GitHub Workflow</p>
-          <p class="learning-text">Managing repositories, branching strategies, and version control best practices.</p>
-        </div>
-      </div>
-    </div>
-  </section>
- 
-  <!-- Contact -->
-  <section class="section reveal" id="contact">
-    <p class="section-label">Find me online</p>
-    <div class="contact-grid">
-      <a class="contact-item" href="https://www.linkedin.com/in/lilitha-njanya-b6aaa8250" target="_blank">
-        <span class="contact-platform">LinkedIn</span>
-        <span class="contact-handle">Lilitha Njanya</span>
-      </a>
-      <a class="contact-item" href="mailto:lilithanjanya12@gmail.com">
-        <span class="contact-platform">Email</span>
-        <span class="contact-handle">lilithanjanya12@gmail.com</span>
-      </a>
-      <a class="contact-item" href="https://github.com/Lilitha-prog" target="_blank">
-        <span class="contact-platform">GitHub</span>
-        <span class="contact-handle">Lilitha-prog</span>
-      </a>
-      <a class="contact-item" href="tel:0635254996">
-        <span class="contact-platform">Phone</span>
-        <span class="contact-handle">063 525 4996</span>
-      </a>
-    </div>
-  </section>
- 
-  <!-- Footer -->
-  <footer>
-    <span class="footer-text">
-      <span class="status-dot"></span>Open to opportunities
-    </span>
-    <span class="footer-brand">Dyan Code</span>
-    <span class="footer-text">© 2026 Lilitha Njanya</span>
-  </footer>
- 
+    </section>
+
+    <footer class="footer">
+      <span><span class="status-dot"></span>Open to opportunities</span>
+      <span>© 2026 Lilitha Njanya</span>
+    </footer>
+
+  </div>
 </div>
- 
+
 <script src="script.js"></script>
 </body>
 </html>
