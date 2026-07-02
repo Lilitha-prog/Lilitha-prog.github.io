@@ -1,104 +1,73 @@
-const navItems = document.querySelectorAll('.nav-item');
-const views = document.querySelectorAll('.view');
-const breadcrumb = document.getElementById('breadcrumb');
-const viewTitle = document.getElementById('viewTitle');
+// Theme handling — manual toggle, persisted, animated circular reveal
+(function () {
+  const html = document.documentElement;
+  const btn = document.getElementById('themeToggle');
+  const iconEl = btn.querySelector('i');
 
-const titles = {
-  dashboard: 'My Portfolio',
-  skills: 'Skills',
-  experience: 'Experience',
-  education: 'Education',
-  projects: 'Projects',
-  certifications: 'Certifications',
-  contact: 'Contact'
-};
+  function setIcon(isDark) {
+    iconEl.className = isDark ? 'ti ti-sun' : 'ti ti-moon';
+  }
 
-function showView(name) {
-  views.forEach(v => v.classList.toggle('active', v.id === 'view-' + name));
-  navItems.forEach(n => n.classList.toggle('active', n.dataset.view === name));
-  viewTitle.textContent = titles[name] || 'My Portfolio';
-  breadcrumb.textContent = 'Portfolio / ' + (titles[name] || 'Dashboard');
-  closeSidebar();
-  window.scrollTo({ top: 0, behavior: 'instant' });
-}
+  const saved = localStorage.getItem('theme');
+  const startDark = saved === 'dark';
+  html.setAttribute('data-theme', startDark ? 'dark' : 'light');
+  setIcon(startDark);
 
-navItems.forEach(item => {
-  item.addEventListener('click', () => showView(item.dataset.view));
-});
+  btn.addEventListener('click', () => {
+    const goingDark = html.getAttribute('data-theme') !== 'dark';
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-document.querySelectorAll('[data-goto]').forEach(el => {
-  el.addEventListener('click', () => showView(el.dataset.goto));
-});
+    if (prefersReducedMotion) {
+      html.setAttribute('data-theme', goingDark ? 'dark' : 'light');
+      setIcon(goingDark);
+      localStorage.setItem('theme', goingDark ? 'dark' : 'light');
+      return;
+    }
 
-if (location.hash) {
-  const initial = location.hash.replace('#', '');
-  if (titles[initial]) showView(initial);
-}
+    const rect = btn.getBoundingClientRect();
+    const cx = rect.left + rect.width / 2;
+    const cy = rect.top + rect.height / 2;
 
-const sidebar = document.getElementById('sidebar');
-const sidebarOverlay = document.getElementById('sidebarOverlay');
-const hamburger = document.getElementById('hamburger');
-const sidebarClose = document.getElementById('sidebarClose');
+    const veil = document.createElement('div');
+    veil.className = 'theme-veil' + (goingDark ? '' : ' light-veil');
+    veil.style.left = cx + 'px';
+    veil.style.top = cy + 'px';
+    document.body.appendChild(veil);
+    requestAnimationFrame(() => veil.classList.add('animating'));
 
-function openSidebar() {
-  sidebar.classList.add('open');
-  sidebarOverlay.classList.add('open');
-}
+    setTimeout(() => {
+      html.setAttribute('data-theme', goingDark ? 'dark' : 'light');
+      setIcon(goingDark);
+      localStorage.setItem('theme', goingDark ? 'dark' : 'light');
+    }, 260);
 
-function closeSidebar() {
-  sidebar.classList.remove('open');
-  sidebarOverlay.classList.remove('open');
-}
+    veil.addEventListener('animationend', () => veil.remove());
+  });
+})();
 
-hamburger.addEventListener('click', openSidebar);
-sidebarClose.addEventListener('click', closeSidebar);
-sidebarOverlay.addEventListener('click', closeSidebar);
+// Contact form submission (Formspree) with inline status message
+(function () {
+  const form = document.getElementById('contactForm');
+  if (!form) return;
+  const status = document.getElementById('formStatus');
 
-const themeToggle = document.getElementById('themeToggle');
-const themeIcon = themeToggle.querySelector('i');
-
-function applyTheme(isDark) {
-  document.body.classList.toggle('dark', isDark);
-  themeIcon.className = isDark ? 'ti ti-sun' : 'ti ti-moon';
-}
-
-const savedTheme = localStorage.getItem('portfolio-theme');
-const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-applyTheme(savedTheme ? savedTheme === 'dark' : prefersDark);
-
-themeToggle.addEventListener('click', () => {
-  const isDark = !document.body.classList.contains('dark');
-  applyTheme(isDark);
-  localStorage.setItem('portfolio-theme', isDark ? 'dark' : 'light');
-});
-
-const contactForm = document.getElementById('contactForm');
-const formStatus = document.getElementById('formStatus');
-
-if (contactForm) {
-  contactForm.addEventListener('submit', async (e) => {
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const submitBtn = contactForm.querySelector('button[type="submit"]');
-    submitBtn.disabled = true;
-    formStatus.textContent = 'Sending...';
-
+    status.textContent = 'Sending…';
     try {
-      const response = await fetch(contactForm.action, {
+      const res = await fetch(form.action, {
         method: 'POST',
-        body: new FormData(contactForm),
-        headers: { Accept: 'application/json' }
+        body: new FormData(form),
+        headers: { Accept: 'application/json' },
       });
-
-      if (response.ok) {
-        formStatus.textContent = "Message sent — I'll get back to you soon.";
-        contactForm.reset();
+      if (res.ok) {
+        status.textContent = "Message sent — I'll get back to you soon.";
+        form.reset();
       } else {
-        formStatus.textContent = 'Something went wrong. Please email me directly instead.';
+        status.textContent = 'Something went wrong. Please email me directly instead.';
       }
     } catch (err) {
-      formStatus.textContent = 'Something went wrong. Please email me directly instead.';
-    } finally {
-      submitBtn.disabled = false;
+      status.textContent = 'Something went wrong. Please email me directly instead.';
     }
   });
-}
+})();
